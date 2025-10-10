@@ -965,38 +965,6 @@ cy_en_smif_status_t Cy_SMIF_MemCalibrateSDL(SMIF_Type *base,
 *******************************************************************************/
 cy_en_smif_status_t Cy_SMIF_HyperBus_InitDevice(SMIF_Type *base, const cy_stc_smif_mem_config_t *memCfg, cy_stc_smif_context_t *context);
 
-/*******************************************************************************
-* Function Name: Cy_SMIF_HyperBus_CalibrateDelay
-****************************************************************************//**
-*
-* This function reads the calibration data pattern in the Hyper memory for every
-* delay tap of the currently selected delay line and records whether it matches
-* the reference pattern. After all taps have been scanned, it determines the
-* center tap of the longest sequence of matches and applies this tap.
-*
-* \note Function assumes that any SMIF has the same number of delay taps
-*
-* \param base
-* Holds the base address of the SMIF Device registers.
-*
-* \param memConfig
-* SMIF memory configuration structure for memory mode of operation.
-*
-* \param dummyCycles
-* Dummy Cycles based on Frequency of operation
-*
-* \param calibrationDataOffsetAddress
-* Address offset of the calibration data from the device's XIP base address
-*
-* \param context
-* Current SMIF driver context
-*
-* \return \ref cy_en_smif_status_t
-*
-* \snippet smif/snippet/main.c snippet_Cy_SMIF_HyperBus
-*
-*******************************************************************************/
-cy_en_smif_status_t Cy_SMIF_HyperBus_CalibrateDelay(SMIF_Type *base, cy_stc_smif_mem_config_t *memConfig, uint8_t dummyCycles, uint32_t calibrationDataOffsetAddress, cy_stc_smif_context_t *context);
 
 /*******************************************************************************
 * Function Cy_SMIF_HyperBus_Read

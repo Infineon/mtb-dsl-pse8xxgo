@@ -36,7 +36,6 @@ var group__group__smif__mem__slot__functions =
     [ "Cy_SMIF_MemSetSDLTap", "group__group__smif__mem__slot__functions.html#ga51dba308ae8592cda5c0b1f80eeee47f", null ],
     [ "Cy_SMIF_MemCalibrateSDL", "group__group__smif__mem__slot__functions.html#ga0b50fd00f027d29d3486bcd6af76fe1c", null ],
     [ "Cy_SMIF_HyperBus_InitDevice", "group__group__smif__mem__slot__functions.html#ga8dabd82bba07ab0be657dafe014e9cc4", null ],
-    [ "Cy_SMIF_HyperBus_CalibrateDelay", "group__group__smif__mem__slot__functions.html#gacb1cae917c6e518a4c53e132947110c0", null ],
     [ "Cy_SMIF_HyperBus_Read", "group__group__smif__mem__slot__functions.html#ga99c97b0a159196000873eebcfbf2edf8", null ],
     [ "Cy_SMIF_HyperBus_Write", "group__group__smif__mem__slot__functions.html#ga10e7768d340fa019ff3e791f8507fd59", null ],
     [ "Cy_SMIF_HyperBus_MMIO_Write", "group__group__smif__mem__slot__functions.html#gaea01814d931dfb66e45c720aab957264", null ],

@@ -28,6 +28,26 @@
 
 #include "cy_pdm_pcm_v2.h"
 
+#define CY_PDM_PCM_MAX_24BIT  ((int32_t)8388607)
+#define CY_PDM_PCM_MIN_24BIT  ((int32_t)-8388608)
+#define CY_PDM_PCM_MAX_16BIT  ((int32_t)32767)
+#define CY_PDM_PCM_MIN_16BIT  ((int32_t)-32768)
+
+/* Gain table for -30dB to +30dB in Q8.8 format (gain * 256)
+   gain_db = 20 log(out/in) */
+static const uint16_t cy_pdm_pcm_gain_table[81] = {
+    3, 3, 3, 4, 4, 5, 5, 6, 6, 7,
+    8, 9, 10, 11, 13, 14, 16, 18, 20, 23,
+    26, 29, 32, 36, 41, 46, 51, 57, 64, 72,
+    81, 91, 102, 114, 128, 144, 162, 181, 203, 228,
+    256, 287, 322, 362, 406, 455, 511, 573, 643, 722,
+    810, 908, 1019, 1144, 1283, 1440, 1615, 1812, 2033, 2282,
+    2560, 2872, 3223, 3616, 4057, 4552, 5108, 5731, 6430, 7215,
+    8095, 9083, 10192, 11435, 12830, 14396, 16153, 18123, 20335, 22816,
+    25600
+};
+
+
 CY_MISRA_DEVIATE_BLOCK_START('MISRA C-2012 Rule 14.3', 14, \
 'Checked manually, passed 1 or 0 in _BOOL2FLD for appropriate functionality.')
 
@@ -342,6 +362,120 @@ cy_en_pdm_pcm_status_t Cy_PDM_PCM_SetGain (PDM_Type * base, uint8_t channel_num,
 
     return result;
 }
+
+/******************************************************************************
+* Function Name: Cy_PDM_PCM_SetFIR0_Scale
+***************************************************************************//**
+*
+* Sets the FIR0 Scale factor for the given channel.
+*
+* \param base
+* The pointer to the PDM-PCM instance address.
+*
+* \param channel_num
+* The channel number for gain setting.
+*
+* \param scale
+* scale value defined as cy_en_pdm_pcm_gain_scale_t
+*
+******************************************************************************/
+cy_en_pdm_pcm_status_t Cy_PDM_PCM_SetFIR0_Scale (PDM_Type * base, uint8_t channel_num, cy_en_pdm_pcm_gain_sel_t scale)
+{
+    cy_en_pdm_pcm_status_t result = CY_PDM_PCM_SUCCESS;
+    cy_en_pdm_pcm_ch_fir0_decimcode_t decim_code;
+    uint8_t fir0_scale_value = (uint8_t)scale;
+
+    if (!CY_PDM_PCM_IS_SCALE_VALID(fir0_scale_value))
+    {
+        result = CY_PDM_PCM_BAD_PARAM;
+    }
+
+    if (CY_PDM_PCM_SUCCESS == result)
+    {
+        CY_MISRA_DEVIATE_LINE('MISRA C-2012 Rule 10.8','Value retrieved is compatible with cy_en_pdm_pcm_ch_fir0_decimcode_t enum.');
+        decim_code = (cy_en_pdm_pcm_ch_fir0_decimcode_t)_FLD2VAL(PDM_CH_FIR0_CTL_DECIM3, PDM_PCM_CH_FIR0_CTL(base, channel_num));
+        Cy_PDM_PCM_Channel_Set_Fir0(base, channel_num, decim_code, fir0_scale_value);
+    }
+
+    return result;
+}
+
+/******************************************************************************
+* Function Name: Cy_PDM_PCM_ApplyPCM_Gain
+***************************************************************************//**
+*
+* This function applies gain in software to one 24-bit PCM sample data
+* output PCM format can be 24-bit or 16-bit, gain should be in the range
+* of -40db to 40db.
+*
+* \param in_sample
+* The pointer to the 24-bit PCM input.
+*
+* \param gain_db
+* The gain to apply. must be within -40db to +40db.
+*
+* \param out_format
+* PCM output format defined as cy_en_pdm_pcm_format_t
+*
+* \param out_sample
+* pointer to output PCM. For 16-bit out format, lower 16-bits holds data.
+******************************************************************************/
+cy_en_pdm_pcm_status_t Cy_PDM_PCM_ApplyPCM_Gain (const int32_t *in_sample, int32_t gain_db, cy_en_pdm_pcm_format_t out_format, int32_t *out_sample)
+{
+    int32_t idx;
+    int32_t  value;
+    uint16_t gain;
+
+    idx = gain_db + (int32_t)40;
+
+    if (idx < (int32_t)0 || idx > (int32_t)80)
+    {
+        return CY_PDM_PCM_BAD_PARAM;
+    }
+
+    gain = cy_pdm_pcm_gain_table[idx];
+    value = (int32_t)(((int64_t)in_sample[0] * (int32_t)gain) + (int32_t)128) >> 8u;
+
+    if (out_format == CY_PDM_PCM_16BIT)
+    {
+        // Convert to 16-bit PCM and clip
+        int32_t val16 = value >> 8u;
+        if (val16 > CY_PDM_PCM_MAX_16BIT)
+        {
+            val16 = CY_PDM_PCM_MAX_16BIT;
+        }
+        else if (val16 < CY_PDM_PCM_MIN_16BIT)
+        {
+            val16 = CY_PDM_PCM_MIN_16BIT;
+        }
+        else
+        {
+            /*empty else*/
+        }
+
+        out_sample[0] = val16 & (int32_t)0x0000FFFF; /*lower 16 bits hold PCM value*/
+    }
+    else
+    {
+        if (value > CY_PDM_PCM_MAX_24BIT)
+        {
+            value = CY_PDM_PCM_MAX_24BIT;
+        }
+        else if (value < CY_PDM_PCM_MIN_24BIT)
+        {
+            value = CY_PDM_PCM_MIN_24BIT;
+        }
+        else
+        {
+            /*empty else*/
+        }
+
+        out_sample[0] = value;
+    }
+
+    return CY_PDM_PCM_SUCCESS;
+}
+
 /** \} group_pdm_pcm_functions_v2 */
 
 CY_MISRA_BLOCK_END('MISRA C-2012 Rule 10.1')
