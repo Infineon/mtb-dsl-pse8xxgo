@@ -676,7 +676,7 @@ static void SfdpGetReadCmd_1_1_8(uint8_t const sfdpBuffer[],
     cmdRead->dataWidth = CY_SMIF_WIDTH_OCTAL;
 }
 #endif
-
+ 
 /*******************************************************************************
 * Function Name: SfdpGetReadCmd_1S_4D_4D
 ****************************************************************************//**
@@ -739,7 +739,7 @@ static void SfdpGetReadCmd_1S_4D_4D(uint8_t const sfdpBuffer[],
 
 
 }
-
+ 
 /*******************************************************************************
 * Function Name: SfdpGetReadCmd_1_4_4
 ****************************************************************************//**
@@ -1788,7 +1788,7 @@ static uint32_t SfdpGetSectorEraseCommand(cy_stc_smif_mem_device_cfg_t *device,
              */
             device->eraseCmd->command = sfdpBuffer[eraseOffset];
             device->eraseCmd->cmdPresence = CY_SMIF_PRESENT_1BYTE;
-
+ 
             /* Recalculate eraseOffset for the 3-byte Address Instruction Table
              * to find the device->eraseSize and device->eraseTime parameters based on Erase Type.
              */
@@ -2362,7 +2362,7 @@ static cy_en_smif_protocol_mode_t GetOctalDDRParams(SMIF_Type *base,
     return pMode;
 }
 #endif
-
+ 
 #ifndef SMIF_JEDEC_STANDARD_DEVICE_RESET_SUPPORT
 /*******************************************************************************
 * Function Name: Cy_SMIF_Reset_Memory

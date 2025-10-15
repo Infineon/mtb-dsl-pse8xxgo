@@ -1349,7 +1349,7 @@ __STATIC_INLINE void Cy_RTC_SyncToRtcAhbAlarm(uint32_t alarmTimeBcd, uint32_t al
 /*******************************************************************************
 *      Internal Functions
 *******************************************************************************/
-
+ 
 #if defined(__cplusplus)
 }
 #endif

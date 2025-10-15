@@ -1,5 +1,6 @@
 var NAVTREEINDEX36 =
 {
+"group__group__tcpwm__functions__quaddec.html#gabaf6e9fd4b30c5bf35cf45ff3ab57f68":[2,2,35,3,1,3],
 "group__group__tcpwm__functions__quaddec.html#gac0819a3dafbb55d93d00ab68db3f3f53":[2,2,35,3,1,8],
 "group__group__tcpwm__functions__quaddec.html#gad1949f233fc99ae5681094b5f6a499bc":[2,2,35,3,1,0],
 "group__group__tcpwm__functions__quaddec.html#gaf0580390faff1cb686a5cd1b9fef6cf4":[2,2,35,3,1,25],
@@ -248,6 +249,5 @@ var NAVTREEINDEX36 =
 "group__group__tdm__enums.html#gga0beaff668ba6388ecccaf62524a37449a044ff60ba2cb87dc7c5d13d9519435f7":[2,2,36,2,7,1],
 "group__group__tdm__enums.html#gga0beaff668ba6388ecccaf62524a37449af2eac9dbb5de448a140b86f6eb977c29":[2,2,36,2,7,0],
 "group__group__tdm__enums.html#gga17c76544100c74ac3f72bd1a23131acfa051dbd4fa664eac02062683b628c0d44":[2,2,36,2,1,3],
-"group__group__tdm__enums.html#gga17c76544100c74ac3f72bd1a23131acfa75776d5de2029a112f5b866fbc8222d0":[2,2,36,2,1,2],
-"group__group__tdm__enums.html#gga17c76544100c74ac3f72bd1a23131acfab2b631e225cb98c190e722797b683ad1":[2,2,36,2,1,0]
+"group__group__tdm__enums.html#gga17c76544100c74ac3f72bd1a23131acfa75776d5de2029a112f5b866fbc8222d0":[2,2,36,2,1,2]
 };

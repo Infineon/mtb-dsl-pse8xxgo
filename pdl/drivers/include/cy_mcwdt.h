@@ -232,7 +232,7 @@ typedef enum
     CY_MCWDT_LOWER_LIMIT_MODE_RESET,         /**< Assert WDT Reset. */
 } cy_en_mcwdtlowerlimitmode_t;
 #endif /* CY_IP_MXS28SRSS, CY_IP_MXS40SSRSS, CY_IP_MXS22SRSS*/
-
+ 
 /** The MCWDT error codes. */
 typedef enum
 {
@@ -240,7 +240,7 @@ typedef enum
     CY_MCWDT_BAD_PARAM = CY_MCWDT_ID | CY_PDL_STATUS_ERROR | 0x01u,     /**< One or more invalid parameters */
 } cy_en_mcwdt_status_t;
 
-
+ 
 /** \} group_mcwdt_enums */
 
 /**
@@ -248,7 +248,7 @@ typedef enum
 * \{
 */
 
-
+ 
 
 #if defined (CY_IP_MXS28SRSS) || defined (CY_IP_MXS40SSRSS) || (defined (CY_IP_MXS40SRSS) && (CY_IP_MXS40SRSS_VERSION < 2)) || defined (CY_IP_MXS22SRSS)
 /** The MCWDT component configuration structure. */
@@ -297,7 +297,7 @@ typedef struct
                                       false: Match based on counter 1 alone, true: Match based on counter 2 and 1 simultaneously.
                                     */
 #endif /* CY_IP_MXS40SSRSS, CY_IP_MXS22SRSS */
-
+ 
     bool     c0ClearOnMatch; /**< The sub-counter#0 Clear On Match parameter enabled/disabled. */
     bool     c1ClearOnMatch; /**< The sub-counter#1 Clear On Match parameter enabled/disabled. */
     bool     c0c1Cascade;    /**< The sub-counter#1 is clocked by LFCLK or from sub-counter#0 cascade. */

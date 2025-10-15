@@ -1,5 +1,6 @@
 var NAVTREEINDEX30 =
 {
+"group__group__sysclk__pll__structs.html#a28fab45dc91ea11ae572d1be64117a5c":[2,2,29,5,1,2,25],
 "group__group__sysclk__pll__structs.html#a298368708777b65225ec1958fa18e3e8":[2,2,29,5,1,2,28],
 "group__group__sysclk__pll__structs.html#a2a1e2cea223e57ee2acae160e6727d25":[2,2,29,5,1,1,0],
 "group__group__sysclk__pll__structs.html#a318ee048f46ac80093e2c526902f703d":[2,2,29,5,1,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX30 =
 "group__group__syslib__cpu__macros.html":[2,2,32,0,0],
 "group__group__syslib__cpu__macros.html#ga1c0ebfbdb81ba7c5a3601a4b274b7666":[2,2,32,0,0,6],
 "group__group__syslib__cpu__macros.html#ga42db4418238e39bcfd002d19df2587f5":[2,2,32,0,0,7],
-"group__group__syslib__cpu__macros.html#ga724e1d0e20719c6ecc0fcc30a54acd96":[2,2,32,0,0,2],
-"group__group__syslib__cpu__macros.html#ga7df4bf9c8ea1a114369c852889496aae":[2,2,32,0,0,0]
+"group__group__syslib__cpu__macros.html#ga724e1d0e20719c6ecc0fcc30a54acd96":[2,2,32,0,0,2]
 };

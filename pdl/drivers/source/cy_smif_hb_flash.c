@@ -246,6 +246,28 @@ static void Cy_SMIF_HB_SetDummyCycles(volatile SMIF_DEVICE_Type *dev, cy_en_smif
     return;
 }
 
+/*******************************************************************************
+* Function Name: Cy_SMIF_HyperBus_CalibrateDelay
+****************************************************************************//**
+*
+* This function reads the calibration data pattern in the Hyper memory for every
+* delay tap of the currently selected delay line and records whether it matches
+* the reference pattern. After all taps have been scanned, it determines the
+* center tap of the longest sequence of matches and applies this tap.
+*
+* \note Function assumes that any SMIF has the same number of delay taps
+* \note This API is deprecated, instead please use \ref Cy_SMIF_MemCalibrateSDL
+*
+*******************************************************************************/
+cy_en_smif_status_t Cy_SMIF_HyperBus_CalibrateDelay(SMIF_Type *base, cy_stc_smif_mem_config_t *memConfig, uint8_t dummyCycles, uint32_t calibrationDataOffsetAddress, cy_stc_smif_context_t *context)
+{
+    CY_UNUSED_PARAM(base);
+    CY_UNUSED_PARAM(memConfig);
+    CY_UNUSED_PARAM(dummyCycles);
+    CY_UNUSED_PARAM(calibrationDataOffsetAddress);
+    CY_UNUSED_PARAM(context);
+    return CY_SMIF_GENERAL_ERROR;
+}
 
 /*******************************************************************************
 * Function Cy_SMIF_HyperBus_Read
@@ -985,3 +1007,4 @@ cy_en_smif_status_t Cy_SMIF_HyperBus_MMIO_Write(SMIF_Type *base,
 #if defined(__cplusplus)
 }
 #endif
+

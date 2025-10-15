@@ -1,5 +1,6 @@
 var NAVTREEINDEX29 =
 {
+"group__group__sysclk__clk__hf__enums.html#ggaf8d7cf42f04f1edafeba204ead24e6aca66f23c81dbf4989a685f5cac30f09f1e":[2,2,29,10,2,3,1],
 "group__group__sysclk__clk__hf__funcs.html":[2,2,29,10,0],
 "group__group__sysclk__clk__hf__funcs.html#ga2d39c7e5111f9ba0738f032a98b4593e":[2,2,29,10,0,4],
 "group__group__sysclk__clk__hf__funcs.html#ga3b86beecfee7ea5361decab70bc7e4b3":[2,2,29,10,0,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX29 =
 "group__group__sysclk__pll__structs.html#a15cb653c8a5ba510762dec1bf59e5226":[2,2,29,5,1,1,22],
 "group__group__sysclk__pll__structs.html#a169e8c959c142babc49a0cdf5e528329":[2,2,29,5,1,2,15],
 "group__group__sysclk__pll__structs.html#a1c884c496ded8f3e390812b471cf55b7":[2,2,29,5,1,2,12],
-"group__group__sysclk__pll__structs.html#a275a2371308891194efd7d2a3cc92999":[2,2,29,5,1,2,5],
-"group__group__sysclk__pll__structs.html#a28fab45dc91ea11ae572d1be64117a5c":[2,2,29,5,1,2,25]
+"group__group__sysclk__pll__structs.html#a275a2371308891194efd7d2a3cc92999":[2,2,29,5,1,2,5]
 };
