@@ -1,8 +1,7 @@
 # ModusToolbox™ PSE8xxGO Device Support Library (DSL)
 
 ## Overview
-
-The ModusToolbox™ Device Support Library provides all necessary device specific components to be used during software development for the PSE8xxGO family of devices.
+The ModusToolbox™ Device Support Library provides all necessary device specific components to be used during software development for the PSOC™ Edge E8x2G, E8x3G, E8x5G, E8x6G family of devices with 5MB total RAM (4MB System SRAM + 1MB SRAM).
 
 ## Features
 The package includes:

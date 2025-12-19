@@ -2,7 +2,7 @@
     "core": {
         "name": "mtb-dsl-pse8xxgo",
         "id": "edb8a898-75f8-5177-b6d2-4f5c408b5fd4",
-        "version": "1.1.1.83"
+        "version": "1.2.0.131"
     },
     "configurator_support": true,
     "opt": {

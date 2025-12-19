@@ -1007,4 +1007,3 @@ cy_en_smif_status_t Cy_SMIF_HyperBus_MMIO_Write(SMIF_Type *base,
 #if defined(__cplusplus)
 }
 #endif
-
