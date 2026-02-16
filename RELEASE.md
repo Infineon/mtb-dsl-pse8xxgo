@@ -1,9 +1,14 @@
-# ModusToolbox™ PSE8xxGO Device Support Library 1.2.0
+# ModusToolbox™ PSE8xxGO Device Support Library 1.3.0
 ## What's Included?
 
 Refer to the [README.md](./README.md) for a complete description of the ModusToolbox™ PSE8xxGO Device Support Library.
 
 ## Change log
+### v1.3.0
+* Fixed issue with Micron SFDP compatibility
+* Documentation updates
+* Personality updates
+* Bug Fixes
 ### v1.2.0
 * PDL ethif driver update with the new API Cy_ETHIF_GetPrivateData
 * Graphics updates

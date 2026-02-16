@@ -4,7 +4,7 @@
 The ModusToolbox PDL simplifies software development for the PSE8xxGO family of devices.
 The PDL integrates device header files, and 
 peripheral drivers into a single package. The drivers abstract the hardware functions into a set of 
-easy-to-use APIs. These are fully documented in the [PDL API Reference Manual](https://infineon.github.io/mtb-dsl-pse8xxgo/html/group__group__pdl__top.html).
+easy-to-use APIs. These are fully documented in the [PDL API Reference Manual](https://infineon.github.io/mtb-dsl-pse8xxgo/html/group__group__pdl__top.html). 
 
 ### Features
 * Includes all the updates made to the peripheral drivers for ModusToolbox™ software
@@ -14,7 +14,7 @@ easy-to-use APIs. These are fully documented in the [PDL API Reference Manual](h
 
 The PDL reduces the need to understand register usage and bit structures, 
 thus easing software development for the extensive set of peripherals in the 
-PSE8xxGO series.
+PSE8xxGO series. 
 See the [PDL API Reference Manual](https://infineon.github.io/mtb-dsl-pse8xxgo/html/group__group__pdl__top.html) for more detailed information.
 See the [PDL Release Notes](./RELEASE.md) for release-specific information.
 
