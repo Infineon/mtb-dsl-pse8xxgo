@@ -55,33 +55,35 @@
     <ParamString id='hasPPCASRAM3' name="hasPPCASRAM3" default='`${hasBlock("ppca[0].cpuss_cnfg[0].mxsramc[3].mpc[0]")}`' visible='false' />
     <ParamString id='hasPPCASRAM4' name="hasPPCASRAM4" default='`${hasBlock("ppca[0].cpuss_cnfg[0].mxsramc[4].mpc[0]")}`' visible='false' />
 
-    <!-- ROT Configurability per memory type (from device-db, defaults to true for BWC) -->
+    <!-- ROT Configurability per memory type (from protection custom data, defaults to true for BWC).
+         Uses MpcLocation/@key lookup because getCustomData does not support bracket characters in
+         attribute-value predicates (e.g. [@location="flashc[0].mpc[0]"] is invalid). -->
     <ParamBool id='rotConfigurableFlash' name="rotConfigurableFlash"
-        default='`${isBlockUsed("flashc[0].mpc[0]") ? getExposedMember("flashc[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;FLASH_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurableRRAM' name="rotConfigurableRRAM"
-        default='`${isBlockUsed("mxrramc[0].mpc[0]") ? getExposedMember("mxrramc[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;RRAM_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurableSMIF0' name="rotConfigurableSMIF0"
-        default='`${isBlockUsed("smif[0].mpc[0]") ? getExposedMember("smif[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;SMIF_PORT0_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurableSMIF1' name="rotConfigurableSMIF1"
-        default='`${isBlockUsed("smif[1].mpc[0]") ? getExposedMember("smif[1].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;SMIF_PORT1_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurableSOCMEM' name="rotConfigurableSOCMEM"
-        default='`${isBlockUsed("socmem[0].mpc[0]") ? getExposedMember("socmem[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;SOCMEM_RAM_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurableSRAM0' name="rotConfigurableSRAM0"
-        default='`${isBlockUsed("mxsramc[0].mpc[0]") ? getExposedMember("mxsramc[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;SRAM0_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurableSRAM1' name="rotConfigurableSRAM1"
-        default='`${isBlockUsed("mxsramc[1].mpc[0]") ? getExposedMember("mxsramc[1].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;SRAM1_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurablePROMC' name="rotConfigurablePROMC"
-        default='`${isBlockUsed("mxpromc[0].mpc[0]") ? getExposedMember("mxpromc[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;PROMC_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurablePPCASRAM0' name="rotConfigurablePPCASRAM0"
-        default='`${isBlockUsed("ppca[0].cpuss_cnfg[0].mxsramc[0].mpc[0]") ? getExposedMember("ppca[0].cpuss_cnfg[0].mxsramc[0].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;PPCA_SRAM0_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurablePPCASRAM1' name="rotConfigurablePPCASRAM1"
-        default='`${isBlockUsed("ppca[0].cpuss_cnfg[0].mxsramc[1].mpc[0]") ? getExposedMember("ppca[0].cpuss_cnfg[0].mxsramc[1].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;PPCA_SRAM1_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurablePPCASRAM2' name="rotConfigurablePPCASRAM2"
-        default='`${isBlockUsed("ppca[0].cpuss_cnfg[0].mxsramc[2].mpc[0]") ? getExposedMember("ppca[0].cpuss_cnfg[0].mxsramc[2].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;PPCA_SRAM2_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurablePPCASRAM3' name="rotConfigurablePPCASRAM3"
-        default='`${isBlockUsed("ppca[0].cpuss_cnfg[0].mxsramc[3].mpc[0]") ? getExposedMember("ppca[0].cpuss_cnfg[0].mxsramc[3].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;PPCA_SRAM3_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
     <ParamBool id='rotConfigurablePPCASRAM4' name="rotConfigurablePPCASRAM4"
-        default='`${isBlockUsed("ppca[0].cpuss_cnfg[0].mxsramc[4].mpc[0]") ? getExposedMember("ppca[0].cpuss_cnfg[0].mxsramc[4].mpc[0]", "rot_configurable") : true}`' visible='false' editable='false' />
+        default='`${getOrDefault(getCustomData("/MpcLocation[@key=&apos;PPCA_SRAM4_MPC&apos;]/@rot_configurable"), "true") ne "false"}`' visible='false' editable='false' />
 
     <ParamString id='regionCountFlash' name="regionCountFlash" default='`${hasFlash ? splitCount(getMpcRegionStarts("flashc[0].mpc[0]")) : ""}`' visible='false' />
     <ParamString id='regionCountRRAM' name="regionCountRRAM" default='`${hasRRAM ? splitCount(getMpcRegionStarts("mxrramc[0].mpc[0]")) : ""}`' visible='false' />
@@ -112,7 +114,7 @@
     <ParamString id='ppcasram4Name' name="ppcasram4Name" default='`${hasPPCASRAM4 ? "PPCA " . getBlockDisplayName("ppca[0].cpuss_cnfg[0].mxsramc[4].mpc[0]",true) : ""}`' visible='false' />
 
     <ParamString id='mpcCount' name="Number of MPCs" default='`${hasFlash + hasRRAM + hasSMIF0 + hasSMIF1 + hasSOCMEM + hasSRAM0 + hasSRAM1 + hasPROMC + hasPPCASRAM0 + hasPPCASRAM1 + hasPPCASRAM2 + hasPPCASRAM3 + hasPPCASRAM4}`' desc='Number of available MPCs' visible='false'/>
-
+    
     <ParamChoice id='responseFlash' name='`${flashName}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasFlash}`'
       editable='false' desc='The access response for the Flash memory is configured at boot and is not configurable by the user.'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
@@ -124,14 +126,14 @@
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responseSMIF0' name='`${smif0Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasSMIF0}`'
-      editable='`${(regionCountSMIF0 &gt; 0)}`'
+      editable='`${(regionCountSMIF0 &gt; 0)}`' 
       desc='`${(regionCountSMIF0 &gt; 0 ? "Determines what happens when the SMIF0 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the SMIF0 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responseSMIF1' name='`${smif1Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasSMIF1}`'
-      editable='`${(regionCountSMIF1 &gt; 0)}`'
+      editable='`${(regionCountSMIF1 &gt; 0)}`' 
       desc='`${(regionCountSMIF1 &gt; 0 ? "Determines what happens when the SMIF1 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the SMIF1 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
@@ -145,56 +147,56 @@
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responseSRAM0' name='`${sram0Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasSRAM0}`'
-      editable='`${(regionCountSRAM0 &gt; 0)}`'
+      editable='`${(regionCountSRAM0 &gt; 0)}`' 
       desc='`${(regionCountSRAM0 &gt; 0 ? "Determines what happens when the SRAM0 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the SRAM0 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responseSRAM1' name='`${sram1Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasSRAM1}`'
-      editable='`${(regionCountSRAM1 &gt; 0)}`'
+      editable='`${(regionCountSRAM1 &gt; 0)}`' 
       desc='`${(regionCountSRAM1 &gt; 0 ? "Determines what happens when the SRAM1 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the SRAM1 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responsePROMC' name='`${promcName}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasPROMC}`'
-      editable='`${(regionCountPROMC &gt; 0)}`'
+      editable='`${(regionCountPROMC &gt; 0)}`' 
       desc='`${(regionCountPROMC &gt; 0 ? "Determines what happens when the PROMC memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the PROMC memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responsePPCASRAM0' name='`${ppcasram0Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasPPCASRAM0}`'
-      editable='`${(regionCountPPCASRAM0 &gt; 0)}`'
+      editable='`${(regionCountPPCASRAM0 &gt; 0)}`' 
       desc='`${(regionCountPPCASRAM0 &gt; 0 ? "Determines what happens when the PPCA SRAM0 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the PPCA SRAM0 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responsePPCASRAM1' name='`${ppcasram1Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasPPCASRAM1}`'
-      editable='`${(regionCountPPCASRAM1 &gt; 0)}`'
+      editable='`${(regionCountPPCASRAM1 &gt; 0)}`' 
       desc='`${(regionCountPPCASRAM1 &gt; 0 ? "Determines what happens when the PPCA SRAM1 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the PPCA SRAM1 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responsePPCASRAM2' name='`${ppcasram2Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasPPCASRAM2}`'
-      editable='`${(regionCountPPCASRAM2 &gt; 0)}`'
+      editable='`${(regionCountPPCASRAM2 &gt; 0)}`' 
       desc='`${(regionCountPPCASRAM2 &gt; 0 ? "Determines what happens when the PPCA SRAM2 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the PPCA SRAM2 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responsePPCASRAM3' name='`${ppcasram3Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasPPCASRAM3}`'
-      editable='`${(regionCountPPCASRAM3 &gt; 0)}`'
+      editable='`${(regionCountPPCASRAM3 &gt; 0)}`' 
       desc='`${(regionCountPPCASRAM3 &gt; 0 ? "Determines what happens when the PPCA SRAM3 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the PPCA SRAM3 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
       <Entry name='Bus Error' value='CY_MPC_BUS_ERR' visible='true' />
     </ParamChoice>
     <ParamChoice id='responsePPCASRAM4' name='`${ppcasram4Name}`' group='Invalid Access Response' default='CY_MPC_BUS_ERR' visible='`${hasPPCASRAM4}`'
-      editable='`${(regionCountPPCASRAM4 &gt; 0)}`'
+      editable='`${(regionCountPPCASRAM4 &gt; 0)}`' 
       desc='`${(regionCountPPCASRAM4 &gt; 0 ? "Determines what happens when the PPCA SRAM4 memory is accessed from a protection context that does not allow access. Response setting is only configurable if there are memory regions configured within the physical memory."
       : "The access response for the PPCA SRAM4 memory is configured at boot and is not configurable by the user.")}`'>
       <Entry name='Read Zero and Write Ignore' value='CY_MPC_RZWI' visible='true' />
@@ -257,13 +259,13 @@
     <Variable id='regionEndsSRAM1' value='`${hasSRAM1 ? getMpcRegionEnds("mxsramc[1].mpc[0]") : ""}`' />
     <Variable id='regionDomainsSRAM1' value='`${hasSRAM1 ? getMpcRegionDomainIds("mxsramc[1].mpc[0]") : ""}`' />
     <Variable id='regionDomainCountSRAM1' value='`${(regionDomainsSRAM1 ne "") ? splitCount(regionDomainsSRAM1) : 0}`' />
-
+  
     <!-- PROMC Regions -->
     <Variable id='regionStartsPROMC' value='`${hasPROMC ? getMpcRegionStarts("mxpromc[0].mpc[0]") : ""}`' />
     <Variable id='regionEndsPROMC' value='`${hasPROMC ? getMpcRegionEnds("mxpromc[0].mpc[0]") : ""}`' />
     <Variable id='regionDomainsPROMC' value='`${hasPROMC ? getMpcRegionDomainIds("mxpromc[0].mpc[0]") : ""}`' />
     <Variable id='regionDomainCountPROMC' value='`${(regionDomainsPROMC ne "") ? splitCount(regionDomainsPROMC) : 0}`' />
-
+    
     <!-- PPCA SRAM0 Regions -->
     <Variable id='regionStartsPPCASRAM0' value='`${hasPPCASRAM0 ? getMpcRegionStarts("ppca[0].cpuss_cnfg[0].mxsramc[0].mpc[0]") : ""}`' />
     <Variable id='regionEndsPPCASRAM0' value='`${hasPPCASRAM0 ? getMpcRegionEnds("ppca[0].cpuss_cnfg[0].mxsramc[0].mpc[0]") : ""}`' />
@@ -679,7 +681,7 @@
         <Member name='cfg_count' value='sizeof(`${getExposedMember("vres[0].protection[0].domain[$idx{domainIdx}]", "displayName")}`_mpc_cfg) / sizeof(cy_stc_mpc_rot_cfg_t)' />
         <Member name='locked_rot_regions' value='`${getExposedMember("vres[0].protection[0].domain[$idx{domainIdx}]", "displayName")}`_mpc_locked_rot_regions' guard='defined(CY_DEVICE_FEATURE_SOME_MPC_ROT_LOCKED)' />
         <Member name='locked_rot_region_count' value='sizeof(`${getExposedMember("vres[0].protection[0].domain[$idx{domainIdx}]", "displayName")}`_mpc_locked_rot_regions) / sizeof(cy_stc_mpc_regions_t)' guard='defined(CY_DEVICE_FEATURE_SOME_MPC_ROT_LOCKED)' />
-        <Member name='locked_rot_cfg' value='`${getExposedMember("vres[0].protection[0].domain[$idx{domainIdx}]", "displayName")}`_mpc_locked_rot_cfg' guard='defined(CY_DEVICE_FEATURE_SOME_MPC_ROT_LOCKED)' />
+        <Member name='locked_rot_cfg' value='&amp;`${getExposedMember("vres[0].protection[0].domain[$idx{domainIdx}]", "displayName")}`_mpc_locked_rot_cfg' guard='defined(CY_DEVICE_FEATURE_SOME_MPC_ROT_LOCKED)' />
       </ConfigStruct>
     </ConfigArray>
 
@@ -866,7 +868,7 @@
       <Line value=''/>
       <Line value='            if (region-&gt;base != NULL)'/>
       <Line value='            {'/>
-      <Line value='                currentResult = _cycfg_mpc_init_regions_nonrot(region, &amp;(domain-&gt;locked_rot_cfg));'/>
+      <Line value='                currentResult = _cycfg_mpc_init_regions_nonrot(region, domain-&gt;locked_rot_cfg);'/>
       <Line value='            }'/>
       <Line value=''/>
       <Line value='            if (CY_RSLT_SUCCESS != currentResult)'/>

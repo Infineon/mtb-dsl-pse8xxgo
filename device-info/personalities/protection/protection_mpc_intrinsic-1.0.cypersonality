@@ -31,7 +31,7 @@
   </BehaviorImplementation>
 
   <Parameters>
-    <ParamString id='block_name' name='block_name' group='' default='`${(getBlockType(0) eq "ppca") ?
+    <ParamString id='block_name' name='block_name' group='' default='`${(getBlockType(0) eq "ppca") ? 
     (getBlockType(0) . "_" . getInstNumber(getBlockType(0)) . "_" . getBlockType(1) . "_" . getInstNumber(getBlockType(1)) . "_" . getBlockType(2) . "_" . getInstNumber(getBlockType(2)) . "_" . getBlockType(3) . "_" . getInstNumber(getBlockType(3))) :
     (getBlockType(0) . "_" . getInstNumber(getBlockType(0)) . "_" . getBlockType(1) . "_" . getInstNumber(getBlockType(1)))}`' visible='false' editable='false' desc='' />
     <ParamString id='blockSize' name='blockSize' group='' default='`${(lookupExpression("MPC.BLOCK_SIZE", 0))}`' visible='false' editable='false' desc='' />
